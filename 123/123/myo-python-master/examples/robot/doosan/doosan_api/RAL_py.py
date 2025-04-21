@@ -693,20 +693,47 @@ if __name__ == '__main__':
             if time.time() - pret >= 5 and time.time() - pret < 65:
                 print('start')
 
+                #1.自由移动
+                # # 计算导纳控制
+                # delta_X = delta_X + T * ((base_TF[0] - K1[0] * delta_X) / B1[0])
+                # # delta_X=0
+                # delta_Y = delta_Y + T * ((base_TF[1] - K1[1] * delta_Y) / B1[1])
+                # # delta_Y=0
+                # delta_Z = delta_Z + T * ((base_TF[2] - K1[2] * delta_Z) / B1[2])
+                # # delta_Z = 0
+                # ee[0] = actual_p[0] + (delta_X * 100)
+                # ee[1] = actual_p[1] + (delta_Y * 100)
+                # ee[2] = actual_p[2] + (delta_Z * 100)
+                # print("-------------------------------------")
+                # print(actual_p)
+                # print(base_TF)
+                
+                 # 2.在x轴上移动
+                # delta_X = delta_X + T * ((base_TF[0] - K1[0] * delta_X) / B1[0])
+                # delta_Y = 0  # 固定 Y 轴
+                # delta_Z = 0  # 固定 Z 轴
+                
+                # # 更新机械臂的目标位置，仅允许 X 轴移动
+                # ee[0] = actual_p[0] + (delta_X * 100)
+                # ee[1] = actual_p[1]  # 保持 Y 轴不变
+                # ee[2] = actual_p[2]  # 保持 Z 轴不变
+                
+                # print("-------------------------------------")
+                # print(actual_p)
+                # print(base_TF)
 
-                # 计算导纳控制
+                #保持z轴不动 在xy平面移动
                 delta_X = delta_X + T * ((base_TF[0] - K1[0] * delta_X) / B1[0])
-                # delta_X=0
                 delta_Y = delta_Y + T * ((base_TF[1] - K1[1] * delta_Y) / B1[1])
-                # delta_Y=0
-                delta_Z = delta_Z + T * ((base_TF[2] - K1[2] * delta_Z) / B1[2])
-                # delta_Z = 0
+                delta_Z = 0
+
                 ee[0] = actual_p[0] + (delta_X * 100)
                 ee[1] = actual_p[1] + (delta_Y * 100)
-                ee[2] = actual_p[2] + (delta_Z * 100)
+                ee[2] = actual_p[2] 
                 print("-------------------------------------")
                 print(actual_p)
                 print(base_TF)
+
 
 
 
