@@ -1,0 +1,10 @@
+build/
+docs/build/
+dist/
+myo-sdk-*/
+.venv
+.env/
+Pipfile
+
+*.py[cod]
+*.egg-info
